@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "734f831f-f9c2-4519-9aa1-6a01615519cf",
+		"name": "Campaigns",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32598918",
+		"_collection_link": "https://red-sunset-174855.postman.co/workspace/Cloud-Contact-(Official)~0d364169-feb2-402e-a0cc-8a007c1b07c6/collection/12453707-734f831f-f9c2-4519-9aa1-6a01615519cf?action=share&source=collection_link&creator=32598918"
+	},
+	"item": [
+		{
+			"name": "Create Direct",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "clientId",
+						"value": "{{clientId}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Sample Campaign\",\n    \"senderPhone\": null,\n    \"message\": \"Hello ${firstName}, this is a test from ccai!\",\n    \"useCopilot\": null,\n    \"accounts\": [\n        {\n            \"firstName\": \"Jhon\",\n            \"lastName\": \"Doe\",\n            \"phone\": \"+1111111111\"\n        }\n    ],\n    \"campaignType\": \"SMS\",\n    \"scheduledTimestamp\": \"2025-01-28T17:12:44.388Z\",\n    \"scheduledTimezone\": \"America/Bogota\",\n    \"contactInput\": \"accounts\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{coreURL}}/api/clients/{{clientId}}/campaigns/direct",
+					"host": [
+						"{{coreURL}}"
+					],
+					"path": [
+						"api",
+						"clients",
+						"{{clientId}}",
+						"campaigns",
+						"direct"
+					]
+				},
+				"description": "Create an SMS campaign by using the client's default phone or messaging service and send SMS messages to the specified accounts.\nThe provided contacts, as specified in the accounts array, are validated using the client's configuration for contact uniqueness rules. If a specific contact already exists in the system, it is used as the target of the message; otherwise, the system proceeds to create a new contact."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "clientId",
+						"value": "{{clientId}}",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{coreURL}}/api/campaigns/{{campaignId}}",
+					"host": [
+						"{{coreURL}}"
+					],
+					"path": [
+						"api",
+						"campaigns",
+						"{{campaignId}}"
+					]
+				},
+				"description": "Delete a campaign"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "campaignId",
+			"value": "3317276"
+		}
+	]
+}
